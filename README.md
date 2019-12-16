@@ -45,6 +45,12 @@ executed (e.g. because of missing additional software, missing API keys,
 …) by the user. If you want to include an example that errors, and you
 want to show the error, wrap the call in `try()`.
 
+Sometimes it is useful to create a custom predicate function (e.g.
+`googlesheets4::sheets_has_token()`) that tests for a prerequisite. Then
+such examples can be placed inside an `if () {...` instead of
+`\dontrun{}`. Instead of a custom predicate, sometimes `interactive()`
+can be used as the condition.
+
 </details>
 
 ## Problem 3
