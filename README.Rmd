@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-This is a place to dump extra ad-hoc checks that CRAN seems to do that are not checked for by `devtools::check()`. Some of them are generally useful, some of them are highly specific, but all of them are reasons that an R package has been rejected by CRAN.
+This is a place to dump extra ad-hoc checks that CRAN does that are not checked for by `devtools::check()`. Some of them are generally useful, some of them are highly specific, but all of them are reasons that an R package has been rejected by CRAN. The hope is that by making them public, we can lower the number of rejections by making package developers more informed.
 
 ## Problem 1
 
