@@ -27,6 +27,9 @@ If you have written a roxygen example section for un-exported functions,
 your example section must call those functions with `:::` like
 `pkg:::my_fun()`.
 
+Alternatively, you can use the roxygen tag `@noRd` to suppress the
+creation of the `.Rd` file.
+
 </details>
 
 ## Problem 2
