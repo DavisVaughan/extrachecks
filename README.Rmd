@@ -89,3 +89,27 @@ There can be a number of problems here:
 - "The Description field is intended to be a (one paragraph) description of what the package does and why it may be useful. Please elaborate." In this case my description was 1 sentence, which I had to expand into a 3-4 sentence paragraph with a broader description of the types of problems the package intended to help with.
 
 </details>
+
+## Problem 7
+
+You get asked if there are any "references describing the methods in your package."
+
+<details><summary>Resolution</summary>
+
+This comment normally comes as the following standard block of text:
+
+> If there are references describing the methods in your package, please
+add these in the description field of your DESCRIPTION file in the form
+authors (year) <doi:...>
+authors (year) <arXiv:...>
+authors (year, ISBN:...)
+or if those are not available: <https:...>
+with no space after 'doi:', 'arXiv:', 'https:' and angle brackets for
+auto-linking.
+(If you want to add a title as well please put it in quotes: "Title")
+
+If there are no references, just nicely reply to the email and tell them that you don't have any. If this was the only note then it should be accepted soon after, without going through another full review.
+
+I have not found a good way to get them to accept a new package without getting this note on the first round of checks. Possibly you could include a preemptive note about it in your `cran-comments.md` file, explaining that there are no references for the package.
+
+</details>
