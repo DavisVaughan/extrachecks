@@ -156,3 +156,24 @@ include a preemptive note about it in your `cran-comments.md` file,
 explaining that there are no references for the package.
 
 </details>
+
+## Problem 8
+
+You get asked about the LICENSE year.
+
+<details>
+
+<summary>Resolution</summary>
+
+I worked on a package in 2019, and then sent it in in 2020. I got the
+following question back:
+
+> Should the year in the LICENSE file be updated?
+
+I updated the license year to 2020 and resubmit the package in. I then
+nicely replied directly to my reviewer and thanked them for catching the
+year discrepency, and then asked them if they could help me push the
+package through without needing another review, since that was the only
+change that had to be made.
+
+</details>
