@@ -45,11 +45,11 @@ executed (e.g. because of missing additional software, missing API keys,
 …) by the user. If you want to include an example that errors, and you
 want to show the error, wrap the call in `try()`.
 
-Sometimes it is useful to create a custom predicate function (e.g.
-`googlesheets4::sheets_has_token()`) that tests for a prerequisite. Then
-such examples can be placed inside an `if () {...` instead of
-`\dontrun{}`. Instead of a custom predicate, sometimes `interactive()`
-can be used as the condition.
+Sometimes it is useful to create a custom predicate function
+(e.g. `googlesheets4::sheets_has_token()`) that tests for a
+prerequisite. Then such examples can be placed inside an `if () {...`
+instead of `\dontrun{}`. Instead of a custom predicate, sometimes
+`interactive()` can be used as the condition.
 
 </details>
 
@@ -66,8 +66,8 @@ provide return value documentation for all exported functions now. If
 you use roxygen2, use the tag `@return`.
 
 This note is also applicable if your function has no return value: “If a
-function does not return a value, please document that too, e.g.
-`\value{None}`.”
+function does not return a value, please document that too,
+e.g. `\value{None}`.”
 
 </details>
 
@@ -184,5 +184,23 @@ nicely replied directly to my reviewer and thanked them for catching the
 year discrepency, and then asked them if they could help me push the
 package through without needing another review, since that was the only
 change that had to be made.
+
+</details>
+
+## Problem 9
+
+You get asked about being the copyright holder (cph).
+
+<details>
+
+<summary>Resolution</summary>
+
+Submitted by @dirkschumacher, who got this comment:
+
+> You also seem to be a copyright holder \[cph\]. Please add this
+> information to the <Authors@R> field.
+
+Even if you are the only author and no other copyright information is
+given, always add a \[cph\] role to your Authors field.
 
 </details>

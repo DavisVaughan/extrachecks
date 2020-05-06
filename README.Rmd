@@ -131,3 +131,17 @@ I worked on a package in 2019, and then sent it in in 2020. I got the following 
 I updated the license year to 2020 and resubmit the package in. I then nicely replied directly to my reviewer and thanked them for catching the year discrepency, and then asked them if they could help me push the package through without needing another review, since that was the only change that had to be made.
 
 </details>
+
+## Problem 9
+
+You get asked about being the copyright holder (cph).
+
+<details><summary>Resolution</summary>
+
+Submitted by @dirkschumacher, who got this comment:
+
+> You also seem to be a copyright holder [cph]. Please add this information to the Authors@R field.
+
+Even if you are the only author and no other copyright information is given, always add a [cph] role to your Authors field.
+
+</details>
