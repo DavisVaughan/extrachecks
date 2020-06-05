@@ -127,12 +127,18 @@ Your package DESCRIPTION Description is flagged.
 
 There can be a number of problems here:
 
-  - “The Description field is intended to be a (one paragraph)
-    description of what the package does and why it may be useful.
-    Please elaborate.” In this case my description was 1 sentence, which
-    I had to expand into a 3-4 sentence paragraph with a broader
-    description of the types of problems the package intended to help
-    with.
+> The Description field is intended to be a (one paragraph) description
+> of what the package does and why it may be useful. Please elaborate.
+
+In this case my description was 1 sentence, which I had to expand into a
+3-4 sentence paragraph with a broader description of the types of
+problems the package intended to help with.
+
+> Please only double quote publication titles in the description of the
+> DESCRIPTION file.
+
+In this case I previously had a sentence that contained: ‘…, like “the
+first Monday of December”’. I just removed the double quotes.
 
 </details>
 
