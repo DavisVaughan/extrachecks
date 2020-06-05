@@ -134,7 +134,7 @@ I worked on a package in 2019, and then sent it in in 2020. I got the following 
 
 > Should the year in the LICENSE file be updated?
 
-I updated the license year to 2020 and resubmit the package in. I then nicely replied directly to my reviewer and thanked them for catching the year discrepency, and then asked them if they could help me push the package through without needing another review, since that was the only change that had to be made.
+I updated the license year to 2020 and resubmit the package in. I then nicely replied directly to my reviewer and thanked them for catching the year discrepancy, and then asked them if they could help me push the package through without needing another review, since that was the only change that had to be made.
 
 </details>
 
@@ -162,8 +162,8 @@ I had originally commented out some code in an example that would otherwise modi
 
 > Examples/code lines in examples should never be commented out.
 Ideally find toy examples that can be regularly executed and checked.
-Lengthy examples (> 5 sec), can be wrapped in \donttest{}. If you don't
-want your code to be executed but still visible to the user, use \dontrun{}.
+Lengthy examples (> 5 sec), can be wrapped in `\donttest{}`. If you don't
+want your code to be executed but still visible to the user, use `\dontrun{}`.
 
 I didn't want any of these options, so I removed the code from the examples section entirely and just mentioned it in the `@details` section instead.
 

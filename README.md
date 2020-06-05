@@ -187,7 +187,7 @@ following question back:
 
 I updated the license year to 2020 and resubmit the package in. I then
 nicely replied directly to my reviewer and thanked them for catching the
-year discrepency, and then asked them if they could help me push the
+year discrepancy, and then asked them if they could help me push the
 package through without needing another review, since that was the only
 change that had to be made.
 
@@ -226,8 +226,9 @@ message on submission:
 
 > Examples/code lines in examples should never be commented out. Ideally
 > find toy examples that can be regularly executed and checked. Lengthy
-> examples (\> 5 sec), can be wrapped in . If you don’t want your code
-> to be executed but still visible to the user, use .
+> examples (\> 5 sec), can be wrapped in `\donttest{}`. If you don’t
+> want your code to be executed but still visible to the user, use
+> `\dontrun{}`.
 
 I didn’t want any of these options, so I removed the code from the
 examples section entirely and just mentioned it in the `@details`
