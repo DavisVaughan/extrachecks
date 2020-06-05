@@ -145,3 +145,20 @@ Submitted by @dirkschumacher, who got this comment:
 Even if you are the only author and no other copyright information is given, always add a [cph] role to your Authors field.
 
 </details>
+
+## Problem 10
+
+You get told not to comment out code in your `@examples` section.
+
+<details><summary>Resolution</summary>
+
+I had originally commented out some code in an example that would otherwise modify the global state. I wanted to talk about the code without having the user accidentally run it. I received the following message on submission:
+
+> Examples/code lines in examples should never be commented out.
+Ideally find toy examples that can be regularly executed and checked.
+Lengthy examples (> 5 sec), can be wrapped in \donttest{}. If you don't
+want your code to be executed but still visible to the user, use \dontrun{}.
+
+I didn't want any of these options, so I removed the code from the examples section entirely and just mentioned it in the `@details` section instead.
+
+</details>
