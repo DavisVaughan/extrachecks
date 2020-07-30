@@ -3,10 +3,6 @@
 
 # extrachecks
 
-<!-- badges: start -->
-
-<!-- badges: end -->
-
 This is a place to dump extra ad-hoc checks that CRAN does that are not
 checked for by `devtools::check()`. Some of them are generally useful,
 some of them are highly specific, but all of them are reasons that an R
@@ -14,14 +10,10 @@ package has been rejected by CRAN. The hope is that by making them
 public, we can lower the number of rejections by making package
 developers more informed.
 
-## Problem 1
-
-You have an un-exported function that you wrote a roxygen example
-section for.
-
 <details>
 
-<summary>Resolution</summary>
+<summary>You have an un-exported function that you wrote a roxygen
+example section for.</summary>
 
 If you have written a roxygen example section for un-exported functions,
 your example section must call those functions with `:::` like
@@ -32,13 +24,12 @@ creation of the `.Rd` file.
 
 </details>
 
-## Problem 2
-
-You used `\dontrun{}` in an example and got a note about that.
+<br></br>
 
 <details>
 
-<summary>Resolution</summary>
+<summary>You used dontrun{} in an example and got a note about
+that.</summary>
 
 `\dontrun{}` should only be used if the example really cannot be
 executed (e.g. because of missing additional software, missing API keys,
@@ -53,13 +44,12 @@ instead of `\dontrun{}`. Instead of a custom predicate, sometimes
 
 </details>
 
-## Problem 3
-
-You have exported functions that don’t have return value documentation.
+<br></br>
 
 <details>
 
-<summary>Resolution</summary>
+<summary>You have exported functions that don’t have return value
+documentation.</summary>
 
 This is a fairly new check that CRAN is being much stricter on. You must
 provide return value documentation for all exported functions now. If
@@ -71,13 +61,11 @@ e.g. `\value{None}`.”
 
 </details>
 
-## Problem 4
-
-You have exported functions that don’t have examples.
+<br></br>
 
 <details>
 
-<summary>Resolution</summary>
+<summary>You have exported functions that don’t have examples.</summary>
 
 This is similar to the problem about return value documentation, but
 slightly less strict. If your exported function has a meaningful return
@@ -92,13 +80,11 @@ there, and it was accepted.
 
 </details>
 
-## Problem 5
-
-Your package DESCRIPTION Title is flagged.
+<br></br>
 
 <details>
 
-<summary>Resolution</summary>
+<summary>Your package DESCRIPTION Title is flagged.</summary>
 
 There can be a number of problems here:
 
@@ -117,13 +103,11 @@ There can be a number of problems here:
 
 </details>
 
-## Problem 6
-
-Your package DESCRIPTION Description is flagged.
+<br></br>
 
 <details>
 
-<summary>Resolution</summary>
+<summary>Your package DESCRIPTION Description is flagged.</summary>
 
 There can be a number of problems here:
 
@@ -142,14 +126,12 @@ first Monday of December”’. I just removed the double quotes.
 
 </details>
 
-## Problem 7
-
-You get asked if there are any “references describing the methods in
-your package.”
+<br></br>
 
 <details>
 
-<summary>Resolution</summary>
+<summary>You get asked if there are any “references describing the
+methods in your package.”</summary>
 
 This comment normally comes as the following standard block of text:
 
@@ -172,13 +154,11 @@ explaining that there are no references for the package.
 
 </details>
 
-## Problem 8
-
-You get asked about the LICENSE year.
+<br></br>
 
 <details>
 
-<summary>Resolution</summary>
+<summary>You get asked about the LICENSE year.</summary>
 
 I worked on a package in 2019, and then sent it in in 2020. I got the
 following question back:
@@ -193,13 +173,11 @@ change that had to be made.
 
 </details>
 
-## Problem 9
-
-You get asked about being the copyright holder (cph).
+<br></br>
 
 <details>
 
-<summary>Resolution</summary>
+<summary>You get asked about being the copyright holder (cph).</summary>
 
 Submitted by @dirkschumacher, who got this comment:
 
@@ -211,13 +189,12 @@ given, always add a \[cph\] role to your Authors field.
 
 </details>
 
-## Problem 10
-
-You get told not to comment out code in your `@examples` section.
+<br></br>
 
 <details>
 
-<summary>Resolution</summary>
+<summary>You get told not to comment out code in your
+<code>@examples</code> section.</summary>
 
 I had originally commented out some code in an example that would
 otherwise modify the global state. I wanted to talk about the code
@@ -235,3 +212,5 @@ examples section entirely and just mentioned it in the `@details`
 section instead.
 
 </details>
+
+<br></br>
