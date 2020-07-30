@@ -23,7 +23,6 @@ If you have written a roxygen example section for un-exported functions, your ex
 
 Alternatively, you can use the roxygen tag `@noRd` to suppress the creation of the `.Rd` file.
 </details>
-<br></br>
 
 
 <details>
@@ -33,7 +32,6 @@ Alternatively, you can use the roxygen tag `@noRd` to suppress the creation of t
 
 Sometimes it is useful to create a custom predicate function (e.g. `googlesheets4::sheets_has_token()`) that tests for a prerequisite. Then such examples can be placed inside an `if () {...` instead of `\dontrun{}`. Instead of a custom predicate, sometimes `interactive()` can be used as the condition.
 </details>
-<br></br>
 
 
 <details>
@@ -43,7 +41,6 @@ This is a fairly new check that CRAN is being much stricter on. You must provide
 
 This note is also applicable if your function has no return value: "If a function does not return a value, please document that too, e.g. `\value{None}`."
 </details>
-<br></br>
 
 
 <details>
@@ -53,7 +50,6 @@ This is similar to the problem about return value documentation, but slightly le
 
 I have seen exceptions with functions that are used for their side effects. For example, `hardhat::create_modeling_package()` creates a new directory, which you would not want to include in an example section (which CRAN runs in their regular checks). I didn't include any examples there, and it was accepted.
 </details>
-<br></br>
 
 
 <details>
@@ -67,7 +63,6 @@ There can be a number of problems here:
 
 - You generally have to put all software / package names in quotes. For example, the riingo package is an interface to Tiingo's stock price api: https://github.com/business-science/riingo/blob/a19c662d9a2acb526a15d119e00afcd3fdc7c24c/DESCRIPTION#L3
 </details>
-<br></br>
 
 
 <details>
@@ -83,7 +78,6 @@ In this case my description was 1 sentence, which I had to expand into a 3-4 sen
 
 In this case I previously had a sentence that contained: '..., like "the first Monday of December"'. I just removed the double quotes.
 </details>
-<br></br>
 
 
 <details>
@@ -105,7 +99,6 @@ If there are no references, just nicely reply to the email and tell them that yo
 
 I have not found a good way to get them to accept a new package without getting this note on the first round of checks. Possibly you could include a preemptive note about it in your `cran-comments.md` file, explaining that there are no references for the package.
 </details>
-<br></br>
 
 
 <details>
@@ -117,7 +110,6 @@ I worked on a package in 2019, and then sent it in in 2020. I got the following 
 
 I updated the license year to 2020 and resubmit the package in. I then nicely replied directly to my reviewer and thanked them for catching the year discrepancy, and then asked them if they could help me push the package through without needing another review, since that was the only change that had to be made.
 </details>
-<br></br>
 
 
 <details>
@@ -129,7 +121,6 @@ Submitted by @dirkschumacher, who got this comment:
 
 Even if you are the only author and no other copyright information is given, always add a [cph] role to your Authors field.
 </details>
-<br></br>
 
 
 <details>
@@ -144,4 +135,3 @@ want your code to be executed but still visible to the user, use `\dontrun{}`.
 
 I didn't want any of these options, so I removed the code from the examples section entirely and just mentioned it in the `@details` section instead.
 </details>
-<br></br>

@@ -24,8 +24,6 @@ creation of the `.Rd` file.
 
 </details>
 
-<br></br>
-
 <details>
 
 <summary>You used dontrun{} in an example and got a note about
@@ -44,8 +42,6 @@ instead of `\dontrun{}`. Instead of a custom predicate, sometimes
 
 </details>
 
-<br></br>
-
 <details>
 
 <summary>You have exported functions that don’t have return value
@@ -60,8 +56,6 @@ function does not return a value, please document that too,
 e.g. `\value{None}`.”
 
 </details>
-
-<br></br>
 
 <details>
 
@@ -79,8 +73,6 @@ directory, which you would not want to include in an example section
 there, and it was accepted.
 
 </details>
-
-<br></br>
 
 <details>
 
@@ -103,8 +95,6 @@ There can be a number of problems here:
 
 </details>
 
-<br></br>
-
 <details>
 
 <summary>Your package DESCRIPTION Description is flagged.</summary>
@@ -125,8 +115,6 @@ In this case I previously had a sentence that contained: ‘…, like “the
 first Monday of December”’. I just removed the double quotes.
 
 </details>
-
-<br></br>
 
 <details>
 
@@ -154,8 +142,6 @@ explaining that there are no references for the package.
 
 </details>
 
-<br></br>
-
 <details>
 
 <summary>You get asked about the LICENSE year.</summary>
@@ -173,8 +159,6 @@ change that had to be made.
 
 </details>
 
-<br></br>
-
 <details>
 
 <summary>You get asked about being the copyright holder (cph).</summary>
@@ -188,8 +172,6 @@ Even if you are the only author and no other copyright information is
 given, always add a \[cph\] role to your Authors field.
 
 </details>
-
-<br></br>
 
 <details>
 
@@ -212,5 +194,3 @@ examples section entirely and just mentioned it in the `@details`
 section instead.
 
 </details>
-
-<br></br>
