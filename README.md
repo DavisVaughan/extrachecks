@@ -194,3 +194,17 @@ examples section entirely and just mentioned it in the `@details`
 section instead.
 
 </details>
+
+<details>
+
+<summary>You get a note like “Please use fully specified URLs starting
+with the protocol, e.g. <https://>….”</summary>
+
+CRAN checks for https URLs and will not allow any http links.
+
+Reported by @pnovack-gottshall, who had two URLs that were flagged. The
+first was `paleobiodb.org/`, which was flagged because it needed
+`https://` in front. The second was an http URL, which was flagged
+because it needed to be https.
+
+</details>
