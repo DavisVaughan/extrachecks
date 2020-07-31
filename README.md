@@ -10,6 +10,9 @@ package has been rejected by CRAN. The hope is that by making them
 public, we can lower the number of rejections by making package
 developers more informed.
 
+If you come across an ad-hoc check that isn’t on this list, please feel
+free to open an issue describing it, or submit a PR\!
+
 <details>
 
 <summary>You have an un-exported function that you wrote a roxygen

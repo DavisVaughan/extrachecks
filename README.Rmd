@@ -15,6 +15,8 @@ knitr::opts_chunk$set(
 
 This is a place to dump extra ad-hoc checks that CRAN does that are not checked for by `devtools::check()`. Some of them are generally useful, some of them are highly specific, but all of them are reasons that an R package has been rejected by CRAN. The hope is that by making them public, we can lower the number of rejections by making package developers more informed.
 
+If you come across an ad-hoc check that isn't on this list, please feel free to open an issue describing it, or submit a PR!
+
 
 <details>
 <summary>You have an un-exported function that you wrote a roxygen example section for.</summary>
