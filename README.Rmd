@@ -145,4 +145,5 @@ I didn't want any of these options, so I removed the code from the examples sect
 CRAN checks for https URLs and will not allow any http links.
 
 Reported by @pnovack-gottshall, who had two URLs that were flagged. The first was `paleobiodb.org/`, which was flagged because it needed `https://` in front. The second was an http URL, which was flagged because it needed to be https.
+And @RMHogervorst who had direct links to a markdown file `CODE_OF_CONDUCT.md` in README. This works on github but will not work on CRAN.
 </details>
