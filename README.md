@@ -211,3 +211,25 @@ first was `paleobiodb.org/`, which was flagged because it needed
 because it needed to be https.
 
 </details>
+
+<details>
+
+<summary>You get a note like “Found the following (possibly) invalid
+file URI”</summary>
+
+You might have a relative link that doesn’t exist in the actual built R
+package. Originally reported by @RMHogervorst, who had a link to
+`CODE_OF_CONDUCT.md` in the README, and received the following message:
+
+    Found the following (possibly) invalid file URI:
+         URI: CODE_OF_CONDUCT.md
+           From: README.md
+
+In this case, the `.Rbuildignore` file ignored the `CODE_OF_CONDUCT.md`
+file, so it didn’t exist after building the R package, meaning that the
+link didn’t work. This can probably be fixed by just removing this file
+from the `.Rbuildignore`. Alternatively,
+`usethis::use_code_of_conduct()` will generate a section to add to your
+README that doesn’t have any relative links.
+
+</details>
