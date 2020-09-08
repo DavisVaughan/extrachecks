@@ -117,6 +117,12 @@ problems the package intended to help with.
 In this case I previously had a sentence that contained: ‘…, like “the
 first Monday of December”’. I just removed the double quotes.
 
+> Functions do not need to be put in single quotes, just packages,
+> software names and API names. ‘case\_when()’ -\> case\_when()
+
+In the Description, function names should not be placed in quotes. This
+is reserved for packages and software names. Reported by @rossellhayes.
+
 </details>
 
 <details>

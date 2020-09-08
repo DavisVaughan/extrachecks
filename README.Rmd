@@ -79,6 +79,10 @@ In this case my description was 1 sentence, which I had to expand into a 3-4 sen
 > Please only double quote publication titles in the description of the DESCRIPTION file.
 
 In this case I previously had a sentence that contained: '..., like "the first Monday of December"'. I just removed the double quotes.
+
+> Functions do not need to be put in single quotes, just packages, software names and API names. 'case_when()' -> case_when()
+
+In the Description, function names should not be placed in quotes. This is reserved for packages and software names. Reported by @rossellhayes.
 </details>
 
 
