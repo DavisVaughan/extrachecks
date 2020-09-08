@@ -123,6 +123,14 @@ first Monday of December”’. I just removed the double quotes.
 In the Description, function names should not be placed in quotes. This
 is reserved for packages and software names. Reported by @rossellhayes.
 
+> Please always explain all acronyms/abbreviations in the description
+> text in the Description field of the DESCRIPTION file. e.g. X-SAMPA
+
+In the Description, all acronyms must be fully expanded the first time
+they are mentioned, no matter how innocuous they seem. This acronym was
+expanded to “Extended Speech Assessment Methods Phonetic Alphabet”,
+which was then accepted by CRAN. Reported by @rossellhayes.
+
 </details>
 
 <details>
