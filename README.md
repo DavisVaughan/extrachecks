@@ -79,7 +79,9 @@ Your package DESCRIPTION Title is flagged.
 There can be a number of problems here:
 
 -   You must use title case with package Titles, generally capitalizing
-    all words except articles like ‘a’ and ‘the’.
+    all words except articles like ‘a’ and ‘the’. Base R’s
+    [`toTitleCase()`](https://stat.ethz.ch/R-manual/R-devel/library/tools/html/toTitleCase.html)
+    might help with formatting.
 
 -   I’ve been flagged for a “redundant” title. I had: “A Toolkit for the
     Construction of Modeling Packages” which was flagged since “Toolkit
@@ -90,6 +92,9 @@ There can be a number of problems here:
     For example, the riingo package is an interface to Tiingo’s stock
     price api:
     <https://github.com/business-science/riingo/blob/a19c662d9a2acb526a15d119e00afcd3fdc7c24c/DESCRIPTION#L3>
+
+-   An initial package submission was rejected with the request to
+    reduce the length of the title to less than 65 characters.
 
 </details>
 <details>
