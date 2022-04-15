@@ -63,7 +63,7 @@ There can be a number of problems here:
 
 - I've been flagged for a "redundant" title. I had: "A Toolkit for the Construction of Modeling Packages" which was flagged since "Toolkit for" seemed redundant. I changed it to "Construct Modeling Packages" and was accepted.
 
-- You generally have to put all software / package names in quotes. For example, the riingo package is an interface to Tiingo's stock price api: https://github.com/business-science/riingo/blob/a19c662d9a2acb526a15d119e00afcd3fdc7c24c/DESCRIPTION#L3
+- You generally have to put all software and R package names in single quotes, this rule also applies to the Description section. For example, the riingo package is an interface to Tiingo's stock price api: https://github.com/business-science/riingo/blob/a19c662d9a2acb526a15d119e00afcd3fdc7c24c/DESCRIPTION#L3
 
 - An initial package submission was rejected with the request to reduce the length of the title to less than 65 characters.
 </details>
@@ -89,6 +89,10 @@ In the Description, function names should not be placed in quotes. This is reser
 > Please always explain all acronyms/abbreviations in the description text in the Description field of the DESCRIPTION file. e.g. X-SAMPA
 
 In the Description, all acronyms must be fully expanded the first time they are mentioned, no matter how innocuous they seem. This acronym was expanded to "Extended Speech Assessment Methods Phonetic Alphabet", which was then accepted by CRAN. Reported by @rossellhayes.
+
+> Please single quote software names.
+
+In the Description, all software and R package names must be placed in single quotes, like 'tidyr'. This rule also applies to the Title section. For example, the riingo package is an interface to Tiingo's stock price api: https://github.com/business-science/riingo/blob/a19c662d9a2acb526a15d119e00afcd3fdc7c24c/DESCRIPTION#L10-L11.
 </details>
 
 
