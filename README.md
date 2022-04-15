@@ -88,9 +88,10 @@ There can be a number of problems here:
     for” seemed redundant. I changed it to “Construct Modeling Packages”
     and was accepted.
 
--   You generally have to put all software / package names in quotes.
-    For example, the riingo package is an interface to Tiingo’s stock
-    price api:
+-   You generally have to put all software and R package names in single
+    quotes, this rule also applies to the Description section. For
+    example, the riingo package is an interface to Tiingo’s stock price
+    api:
     <https://github.com/business-science/riingo/blob/a19c662d9a2acb526a15d119e00afcd3fdc7c24c/DESCRIPTION#L3>
 
 -   An initial package submission was rejected with the request to
@@ -118,7 +119,7 @@ In this case I previously had a sentence that contained: ‘…, like “the
 first Monday of December”’. I just removed the double quotes.
 
 > Functions do not need to be put in single quotes, just packages,
-> software names and API names. ‘case\_when()’ -&gt; case\_when()
+> software names and API names. ‘case_when()’ -\> case_when()
 
 In the Description, function names should not be placed in quotes. This
 is reserved for packages and software names. Reported by @rossellhayes.
@@ -130,6 +131,14 @@ In the Description, all acronyms must be fully expanded the first time
 they are mentioned, no matter how innocuous they seem. This acronym was
 expanded to “Extended Speech Assessment Methods Phonetic Alphabet”,
 which was then accepted by CRAN. Reported by @rossellhayes.
+
+> Please single quote software names.
+
+In the Description, all software and R package names must be placed in
+single quotes, like ‘tidyr’. This rule also applies to the Title
+section. For example, the riingo package is an interface to Tiingo’s
+stock price api:
+<https://github.com/business-science/riingo/blob/a19c662d9a2acb526a15d119e00afcd3fdc7c24c/DESCRIPTION#L10-L11>.
 </details>
 <details>
 <summary>
@@ -141,9 +150,9 @@ This comment normally comes as the following standard block of text:
 
 > If there are references describing the methods in your package, please
 > add these in the description field of your DESCRIPTION file in the
-> form authors (year) &lt;doi:…&gt; authors (year) &lt;arXiv:…&gt;
-> authors (year, ISBN:…) or if those are not available: &lt;https:…&gt;
-> with no space after ‘doi:’, ‘arXiv:’, ‘https:’ and angle brackets for
+> form authors (year) \<doi:…\> authors (year) \<arXiv:…\> authors
+> (year, ISBN:…) or if those are not available: \<https:…\> with no
+> space after ‘doi:’, ‘arXiv:’, ‘https:’ and angle brackets for
 > auto-linking. (If you want to add a title as well please put it in
 > quotes: “Title”)
 
@@ -198,7 +207,7 @@ message on submission:
 
 > Examples/code lines in examples should never be commented out. Ideally
 > find toy examples that can be regularly executed and checked. Lengthy
-> examples (&gt; 5 sec), can be wrapped in `\donttest{}`. If you don’t
+> examples (\> 5 sec), can be wrapped in `\donttest{}`. If you don’t
 > want your code to be executed but still visible to the user, use
 > `\dontrun{}`.
 
