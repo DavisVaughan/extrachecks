@@ -248,3 +248,33 @@ from the `.Rbuildignore`. Alternatively,
 `usethis::use_code_of_conduct()` will generate a section to add to your
 README that doesn’t have any relative links.
 </details>
+<details>
+<summary>
+You get a note like “Found the following (possibly) invalid URLs”
+</summary>
+
+One of the most common causes for this is that you have a URL that
+*redirects* to another source. CRAN won’t allow you to have redirects,
+so you might get a rejection that looks like this:
+
+    Found the following (possibly) invalid URLs:
+
+    URL: https://h3geo.org/docs/core-library/coordsystems#faceijk-coordinates
+         (moved to https://h3geo.org/docs/core-library/coordsystems/)
+    From: inst/doc/intro-to-h3jsr.html
+    Status: 200
+    Message: OK
+
+    Please change http --> https, add trailing slashes, or follow moved
+    content as appropriate.
+
+The problem here is that
+`https://h3geo.org/docs/core-library/coordsystems#faceijk-coordinates`
+redirects to `https://h3geo.org/docs/core-library/coordsystems/`. This
+was actually a typo, there was a forgotten `/` right before `#faceijk`.
+
+To determine if you have any redirecting URLs, you can use
+`urlchecker::url_check()` to find them (and find what they redirect to)
+and `urlchecker::url_update()` to automatically update them to their
+redirected URL.
+</details>
