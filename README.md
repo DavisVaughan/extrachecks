@@ -105,6 +105,14 @@ Your package DESCRIPTION Description is flagged.
 
 There can be a number of problems here:
 
+> Do not start the description with “This package”, package name, title
+> or “Functions for”.
+
+While it may be intuitive to start a description this way, they are
+actually not allowed. For example, instead of “this package renders
+slides to different formats…” or “functions for rendering slides to
+different formats…”, just use “Render slides to different formats…”.
+
 > The Description field is intended to be a (one paragraph) description
 > of what the package does and why it may be useful. Please elaborate.
 
