@@ -286,3 +286,15 @@ To determine if you have any redirecting URLs, you can use
 and `urlchecker::url_update()` to automatically update them to their
 redirected URL.
 </details>
+<details>
+<summary>
+You get a note like “found 5 marked UTF-8 strings” in the check: “data
+for non-ASCII characters”
+</summary>
+
+This happens when you have non-ASCII characters in your data directory
+files, which is not checked by `devtools::check()`. You can use the
+undocumented function `tools:::.check_package_datasets(".")` for a quick
+check, or alternatively one can use `tools::showNonASCIIfile()`.
+
+</details>
