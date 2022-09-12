@@ -41,7 +41,7 @@ Sometimes it is useful to create a custom predicate function (e.g. `googlesheets
 
 This is a fairly new check that CRAN is being much stricter on. You must provide return value documentation for all exported functions now. If you use roxygen2, use the tag `@return`.
 
-This note is also applicable if your function has no return value: "If a function does not return a value, please document that too, e.g. `\value{None}`."
+This note is also applicable if your function is marked internal (`@keywords internal`) and/or has no return value: "If a function does not return a value, please document that too, e.g. `\value{None}`."
 </details>
 
 
