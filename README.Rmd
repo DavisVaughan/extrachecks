@@ -41,6 +41,8 @@ Sometimes it is useful to create a custom predicate function (e.g. `googlesheets
 
 This is a fairly new check that CRAN is being much stricter on. You must provide return value documentation for all exported functions now. If you use roxygen2, use the tag `@return`.
 
+This note is applicable even if your function is marked internal with `@keywords internal`.
+
 This note is also applicable if your function has no return value: "If a function does not return a value, please document that too, e.g. `\value{None}`."
 </details>
 
@@ -49,6 +51,8 @@ This note is also applicable if your function has no return value: "If a functio
 <summary>You have exported functions that don't have examples.</summary>
 
 This is similar to the problem about return value documentation, but slightly less strict. If your exported function has a meaningful return value, then it will almost definitely require an examples section. Use the roxygen2 tag `@examples` to create one.
+
+This note is applicable even if your function is marked internal with `@keywords internal`.
 
 I have seen exceptions with functions that are used for their side effects. For example, `hardhat::create_modeling_package()` creates a new directory, which you would not want to include in an example section (which CRAN runs in their regular checks). I didn't include any examples there, and it was accepted.
 </details>
