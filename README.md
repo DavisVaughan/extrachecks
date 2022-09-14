@@ -148,10 +148,11 @@ which was then accepted by CRAN. Reported by @rossellhayes.
 
 > Please single quote software names.
 
-In the Description, all software and R package names must be placed in
-single quotes, like ‘tidyr’. This rule also applies to the Title
-section. For example, the riingo package is an interface to Tiingo’s
-stock price api:
+In the Description, all package names, software names, and API names
+must be placed in single quotes, like ‘tidyr’. This includes R itself,
+which should be styled ‘R’. This rule also applies to the Title section.
+For example, the riingo package is an interface to Tiingo’s stock price
+api:
 <https://github.com/business-science/riingo/blob/a19c662d9a2acb526a15d119e00afcd3fdc7c24c/DESCRIPTION#L10-L11>.
 </details>
 <details>
