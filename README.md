@@ -79,6 +79,40 @@ there, and it was accepted.
 </details>
 <details>
 <summary>
+You fail a <code>noSuggests</code> check.
+</summary>
+
+Occasionally CRAN might decide to run their `noSuggests` check on your
+package. This will run an `R CMD check` on your package without any
+`Suggests` packages installed, which means that examples and tests that
+rely on them can break if not guarded against properly. We don’t
+typically worry about this much, because CRAN rarely enforces this, but
+if they do, you can use the following techniques:
+
+- For an individual example, you can use an `if` block like
+  `if (rlang::is_installed("pkg")) {` to protect code that relies on a
+  suggested package from running if the package isn’t installed.
+
+- For an entire example section that relies on `"pkg"` being installed,
+  you can use the roxygen2 tag `@examplesIf` (like this
+  `@examplesIf rlang::is_installed("pkg")`) to avoid running any
+  examples in that section if the package isn’t installed.
+
+- For tests, use `testthat::skip_if_not_installed()`.
+
+- Additionally, you can use [this GitHub
+  Action](https://github.com/r-lib/actions/blob/v2-branch/examples/check-no-suggests.yaml)
+  which mimics a `noSuggests` run by CRAN to ensure that you pass a
+  check when no suggested packages are installed.
+
+The `noSuggests` requirement also applies to recursive dependencies. For
+example, if your package uses `sf::read_sf()`, that requires the tibble
+package, but sf only `Suggests` it, so you need to guard against this
+appropriately in your package.
+
+</details>
+<details>
+<summary>
 Your package DESCRIPTION Title is flagged.
 </summary>
 
