@@ -123,10 +123,13 @@ There can be a number of problems here:
   [`toTitleCase()`](https://stat.ethz.ch/R-manual/R-devel/library/tools/html/toTitleCase.html)
   might help with formatting.
 
-- I’ve been flagged for a “redundant” title. I had: “A Toolkit for the
-  Construction of Modeling Packages” which was flagged since “Toolkit
-  for” seemed redundant. I changed it to “Construct Modeling Packages”
-  and was accepted.
+- I’ve been flagged for a “redundant” title.
+
+  - I had: “A Toolkit for the Construction of Modeling Packages” which
+    was flagged since “Toolkit for” seemed redundant. I changed it to
+    “Construct Modeling Packages” and was accepted.
+  - I had “Command Argument Parsing for R” flagged because of the,
+    admittedly, redundant “for R”
 
 - You generally have to put all software and R package names in single
   quotes, this rule also applies to the Description section. For
