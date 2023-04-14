@@ -13,11 +13,7 @@ developers more informed.
 If you come across an ad-hoc check that isn’t on this list, please feel
 free to open an issue describing it, or submit a PR!
 
-<details>
-<summary>
-You have an un-exported function that you wrote a roxygen example
-section for.
-</summary>
+### You have an un-exported function that you wrote a roxygen example section for
 
 If you have written a roxygen example section for un-exported functions,
 your example section must call those functions with `:::` like
@@ -25,11 +21,8 @@ your example section must call those functions with `:::` like
 
 Alternatively, you can use the roxygen tag `@noRd` to suppress the
 creation of the `.Rd` file.
-</details>
-<details>
-<summary>
-You used dontrun{} in an example and got a note about that.
-</summary>
+
+### You used `\dontrun{}` in an example and got a note about that
 
 `\dontrun{}` should only be used if the example really cannot be
 executed (e.g. because of missing additional software, missing API keys,
@@ -41,11 +34,8 @@ Sometimes it is useful to create a custom predicate function
 prerequisite. Then such examples can be placed inside an `if () {...`
 instead of `\dontrun{}`. Instead of a custom predicate, sometimes
 `interactive()` can be used as the condition.
-</details>
-<details>
-<summary>
-You have exported functions that don’t have return value documentation.
-</summary>
+
+### You have exported functions that don’t have return value documentation
 
 This is a fairly new check that CRAN is being much stricter on. You must
 provide return value documentation for all exported functions now. If
@@ -57,11 +47,8 @@ This note is applicable even if your function is marked internal with
 This note is also applicable if your function has no return value: “If a
 function does not return a value, please document that too,
 e.g. `\value{None}`.”
-</details>
-<details>
-<summary>
-You have exported functions that don’t have examples.
-</summary>
+
+### You have exported functions that don’t have examples
 
 This is similar to the problem about return value documentation, but
 slightly less strict. If your exported function has a meaningful return
@@ -76,11 +63,8 @@ effects. For example, `hardhat::create_modeling_package()` creates a new
 directory, which you would not want to include in an example section
 (which CRAN runs in their regular checks). I didn’t include any examples
 there, and it was accepted.
-</details>
-<details>
-<summary>
-You fail a <code>noSuggests</code> check.
-</summary>
+
+### You fail a `noSuggests` check
 
 Occasionally CRAN might decide to run their `noSuggests` check on your
 package. This will run an `R CMD check` on your package without any
@@ -110,11 +94,7 @@ example, if your package uses `sf::read_sf()`, that requires the tibble
 package, but sf only `Suggests` it, so you need to guard against this
 appropriately in your package.
 
-</details>
-<details>
-<summary>
-Your package DESCRIPTION Title is flagged.
-</summary>
+### Your package DESCRIPTION Title is flagged
 
 There can be a number of problems here:
 
@@ -140,11 +120,7 @@ There can be a number of problems here:
 - An initial package submission was rejected with the request to reduce
   the length of the title to less than 65 characters.
 
-</details>
-<details>
-<summary>
-Your package DESCRIPTION Description is flagged.
-</summary>
+### Your package DESCRIPTION Description is flagged
 
 There can be a number of problems here:
 
@@ -176,7 +152,7 @@ In the Description, function names should not be placed in quotes. This
 is reserved for packages and software names. Reported by @rossellhayes.
 
 > Please always explain all acronyms/abbreviations in the description
-> text in the Description field of the DESCRIPTION file. e.g. X-SAMPA
+> text in the Description field of the DESCRIPTION file. e.g. X-SAMPA
 
 In the Description, all acronyms must be fully expanded the first time
 they are mentioned, no matter how innocuous they seem. This acronym was
@@ -191,12 +167,8 @@ which should be styled ‘R’. This rule also applies to the Title section.
 For example, the riingo package is an interface to Tiingo’s stock price
 api:
 <https://github.com/business-science/riingo/blob/a19c662d9a2acb526a15d119e00afcd3fdc7c24c/DESCRIPTION#L10-L11>.
-</details>
-<details>
-<summary>
-You get asked if there are any “references describing the methods in
-your package.”
-</summary>
+
+### You get asked if there are any “references describing the methods in your package.”
 
 This comment normally comes as the following standard block of text:
 
@@ -216,11 +188,8 @@ I have not found a good way to get them to accept a new package without
 getting this note on the first round of checks. Possibly you could
 include a preemptive note about it in your `cran-comments.md` file,
 explaining that there are no references for the package.
-</details>
-<details>
-<summary>
-You get asked about the LICENSE year.
-</summary>
+
+### You get asked about the LICENSE year
 
 I worked on a package in 2019, and then sent it in in 2020. I got the
 following question back:
@@ -232,11 +201,8 @@ nicely replied directly to my reviewer and thanked them for catching the
 year discrepancy, and then asked them if they could help me push the
 package through without needing another review, since that was the only
 change that had to be made.
-</details>
-<details>
-<summary>
-You get asked about being the copyright holder (cph).
-</summary>
+
+### You get asked about being the copyright holder (cph)
 
 Submitted by @dirkschumacher, who got this comment:
 
@@ -245,12 +211,8 @@ Submitted by @dirkschumacher, who got this comment:
 
 Even if you are the only author and no other copyright information is
 given, always add a \[cph\] role to your Authors field.
-</details>
-<details>
-<summary>
-You get told not to comment out code in your <code>@examples</code>
-section.
-</summary>
+
+### You get told not to comment out code in your `@examples` section
 
 I had originally commented out some code in an example that would
 otherwise modify the global state. I wanted to talk about the code
@@ -266,12 +228,8 @@ message on submission:
 I didn’t want any of these options, so I removed the code from the
 examples section entirely and just mentioned it in the `@details`
 section instead.
-</details>
-<details>
-<summary>
-You get a note like “Please use fully specified URLs starting with the
-protocol, e.g. <https://>….”
-</summary>
+
+### You get a note like “Please use fully specified URLs starting with the protocol, e.g. <https://>….”
 
 CRAN checks for https URLs and will not allow any http links.
 
@@ -279,11 +237,8 @@ Reported by @pnovack-gottshall, who had two URLs that were flagged. The
 first was `paleobiodb.org/`, which was flagged because it needed
 `https://` in front. The second was an http URL, which was flagged
 because it needed to be https.
-</details>
-<details>
-<summary>
-You get a note like “Found the following (possibly) invalid file URI”
-</summary>
+
+### You get a note like “Found the following (possibly) invalid file URI”
 
 You might have a relative link that doesn’t exist in the actual built R
 package. Originally reported by @RMHogervorst, who had a link to
@@ -299,11 +254,8 @@ link didn’t work. This can probably be fixed by just removing this file
 from the `.Rbuildignore`. Alternatively,
 `usethis::use_code_of_conduct()` will generate a section to add to your
 README that doesn’t have any relative links.
-</details>
-<details>
-<summary>
-You get a note like “Found the following (possibly) invalid URLs”
-</summary>
+
+### You get a note like “Found the following (possibly) invalid URLs”
 
 One of the most common causes for this is that you have a URL that
 *redirects* to another source. CRAN won’t allow you to have redirects,
@@ -329,4 +281,3 @@ To determine if you have any redirecting URLs, you can use
 `urlchecker::url_check()` to find them (and find what they redirect to)
 and `urlchecker::url_update()` to automatically update them to their
 redirected URL.
-</details>
