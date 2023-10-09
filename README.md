@@ -124,8 +124,8 @@ There can be a number of problems here:
 
 There can be a number of problems here:
 
-> Do not start the description with “This package”, package name, title
-> or “Functions for”.
+> Do not start the description with “This package”, “Tools to”, package
+> name, title, “Functions for” or similar.
 
 While it may be intuitive to start a description this way, they are
 actually not allowed. For example, instead of “this package renders
