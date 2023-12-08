@@ -64,6 +64,37 @@ directory, which you would not want to include in an example section
 (which CRAN runs in their regular checks). I didn’t include any examples
 there, and it was accepted.
 
+### You have code that sets `options()` or `par()` but does not reset them
+
+This is a comment about code with side-effects:
+
+> Please always make sure to reset to user’s `options()`, working
+> directory or `par()` after you changed it in examples and vignettes
+> and demos, e.g.:
+
+``` r
+old <- options(digits = 3)
+...
+options(old)
+```
+
+Remember to reset the global or graphical options in code examples and
+vignettes after setting them.
+
+### You have code that writes to user’s home directory or package directory
+
+You might get this comment for auxiliary code that generates files for
+the package itself:
+
+> Please ensure that your functions do not write by default or in your
+> examples/vignettes/tests in the user’s home filespace (including the
+> package directory and `getwd()`). This is not allowed by CRAN
+> policies. Please omit any default path in writing functions. In your
+> examples/vignettes/tests you can write to `tempdir()`.
+
+I got flagged with code stored in `inst/` that writes a logo image to
+`man/figures/`.
+
 ### You fail a `noSuggests` check
 
 Occasionally CRAN might decide to run their `noSuggests` check on your
