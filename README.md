@@ -3,17 +3,17 @@
 
 # extrachecks
 
-This is a place to dump extra ad-hoc checks that CRAN does that are not
-checked for by `devtools::check()`. Some of them are generally useful,
-some of them are highly specific, but all of them are reasons that an R
-package has been rejected by CRAN. The hope is that by making them
-public, we can lower the number of rejections by making package
-developers more informed.
+This is a place to dump extra ad-hoc checks that CRAN does for new
+submissions that are not checked in `devtools::check()`/`R CMD check`.
+Some of them are generally useful, some of them are highly specific, but
+all of them are reasons that an R package has been rejected by CRAN. The
+hope is that by making them public, we can lower the number of
+rejections by making package developers more informed.
 
 If you come across an ad-hoc check that isn’t on this list, please feel
 free to open an issue describing it, or submit a PR!
 
-### You have an un-exported function that you wrote a roxygen example section for
+### You wrote roxygen examples for an un-exported function
 
 If you have written a roxygen example section for un-exported functions,
 your example section must call those functions with `:::` like
@@ -22,7 +22,7 @@ your example section must call those functions with `:::` like
 Alternatively, you can use the roxygen tag `@noRd` to suppress the
 creation of the `.Rd` file.
 
-### You used `\dontrun{}` in an example and got a note about that
+### You used `\dontrun{}` in an example or commented out code
 
 `\dontrun{}` should only be used if the example really cannot be
 executed (e.g. because of missing additional software, missing API keys,
@@ -31,15 +31,29 @@ want to show the error, wrap the call in `try()`.
 
 Sometimes it is useful to create a custom predicate function
 (e.g. `googlesheets4::sheets_has_token()`) that tests for a
-prerequisite. Then such examples can be placed inside an `if () {...`
-instead of `\dontrun{}`. Instead of a custom predicate, sometimes
-`interactive()` can be used as the condition.
+prerequisite. Then such examples can be placed inside an `if () {...` or
+`@examplesIf` instead of `\dontrun{}`. Instead of a custom predicate,
+sometimes `interactive()` can be used as the condition.
 
-### You have exported functions that don’t have return value documentation
+I had originally commented out some code in an example that would
+otherwise modify the global state. I wanted to talk about the code
+without having the user accidentally run it. I received the following
+message on submission:
 
-This is a fairly new check that CRAN is being much stricter on. You must
-provide return value documentation for all exported functions now. If
-you use roxygen2, use the tag `@return`.
+> Examples/code lines in examples should never be commented out. Ideally
+> find toy examples that can be regularly executed and checked. Lengthy
+> examples (\> 5 sec), can be wrapped in `\donttest{}`. If you don’t
+> want your code to be executed but still visible to the user, use
+> `\dontrun{}`.
+
+I didn’t want any of these options, so I removed the code from the
+examples section entirely and just mentioned it in the `@details`
+section instead.
+
+### You didn’t document the return value for an exported functions
+
+You must provide return value documentation for all exported functions
+now. If you use roxygen2, use the tag `@return`.
 
 This note is applicable even if your function is marked internal with
 `@keywords internal`.
@@ -48,15 +62,9 @@ This note is also applicable if your function has no return value: “If a
 function does not return a value, please document that too,
 e.g. `\value{None}`.”
 
-You can check for missing `\value` sections locally with
-`devtools::check_doc_fields()`.
-
-### You have exported functions that don’t have examples
-
-This is similar to the problem about return value documentation, but
-slightly less strict. If your exported function has a meaningful return
-value, then it will almost definitely require an examples section. Use
-the roxygen2 tag `@examples` to create one.
+If your exported function has a meaningful return value, then it will
+almost definitely require an examples section. Use the roxygen2 tag
+`@examples` to create one.
 
 This note is applicable even if your function is marked internal with
 `@keywords internal`.
@@ -67,38 +75,8 @@ directory, which you would not want to include in an example section
 (which CRAN runs in their regular checks). I didn’t include any examples
 there, and it was accepted.
 
-You can check for missing `\examples` sections locally with
+You can check for missing `\value` and `\examples` sections locally with
 `devtools::check_doc_fields()`.
-
-### You fail a `noSuggests` check
-
-Occasionally CRAN might decide to run their `noSuggests` check on your
-package. This will run an `R CMD check` on your package without any
-`Suggests` packages installed, which means that examples and tests that
-rely on them can break if not guarded against properly. We don’t
-typically worry about this much, because CRAN rarely enforces this, but
-if they do, you can use the following techniques:
-
-- For an individual example, you can use an `if` block like
-  `if (rlang::is_installed("pkg")) {` to protect code that relies on a
-  suggested package from running if the package isn’t installed.
-
-- For an entire example section that relies on `"pkg"` being installed,
-  you can use the roxygen2 tag `@examplesIf` (like this
-  `@examplesIf rlang::is_installed("pkg")`) to avoid running any
-  examples in that section if the package isn’t installed.
-
-- For tests, use `testthat::skip_if_not_installed()`.
-
-- Additionally, you can use [this GitHub
-  Action](https://github.com/r-lib/actions/blob/v2-branch/examples/check-no-suggests.yaml)
-  which mimics a `noSuggests` run by CRAN to ensure that you pass a
-  check when no suggested packages are installed.
-
-The `noSuggests` requirement also applies to recursive dependencies. For
-example, if your package uses `sf::read_sf()`, that requires the tibble
-package, but sf only `Suggests` it, so you need to guard against this
-appropriately in your package.
 
 ### Your package DESCRIPTION Title is flagged
 
@@ -197,43 +175,20 @@ explaining that there are no references for the package.
 
 ### You get asked about the LICENSE year
 
-I worked on a package in 2019, and then sent it in in 2020. I got the
+I started on a package in 2019, and then sent it in in 2020. I got the
 following question back:
 
 > Should the year in the LICENSE file be updated?
-
-I updated the license year to 2020 and resubmit the package in. I then
-nicely replied directly to my reviewer and thanked them for catching the
-year discrepancy, and then asked them if they could help me push the
-package through without needing another review, since that was the only
-change that had to be made.
 
 ### You get asked about being the copyright holder (cph)
 
 Submitted by @dirkschumacher, who got this comment:
 
-> You also seem to be a copyright holder \[cph\]. Please add this
-> information to the <Authors@R> field.
+> You also seem to be a copyright holder cph. Please add this
+> information to the `Authors@R` field.
 
 Even if you are the only author and no other copyright information is
-given, always add a \[cph\] role to your Authors field.
-
-### You get told not to comment out code in your `@examples` section
-
-I had originally commented out some code in an example that would
-otherwise modify the global state. I wanted to talk about the code
-without having the user accidentally run it. I received the following
-message on submission:
-
-> Examples/code lines in examples should never be commented out. Ideally
-> find toy examples that can be regularly executed and checked. Lengthy
-> examples (\> 5 sec), can be wrapped in `\donttest{}`. If you don’t
-> want your code to be executed but still visible to the user, use
-> `\dontrun{}`.
-
-I didn’t want any of these options, so I removed the code from the
-examples section entirely and just mentioned it in the `@details`
-section instead.
+given, always add a `cph` role to your Authors field.
 
 ### You get a note like “Please use fully specified URLs starting with the protocol, e.g. <https://>….”
 
@@ -244,46 +199,32 @@ first was `paleobiodb.org/`, which was flagged because it needed
 `https://` in front. The second was an http URL, which was flagged
 because it needed to be https.
 
-### You get a note like “Found the following (possibly) invalid file URI”
+### You fail a `noSuggests` check
 
-You might have a relative link that doesn’t exist in the actual built R
-package. Originally reported by @RMHogervorst, who had a link to
-`CODE_OF_CONDUCT.md` in the README, and received the following message:
+Occasionally CRAN might decide to run their `noSuggests` check on your
+package. This will run an `R CMD check` on your package without any
+`Suggests` packages installed, which means that examples and tests that
+rely on them can break if not guarded against properly. We don’t
+typically worry about this much, because CRAN rarely enforces this, but
+if they do, you can use the following techniques:
 
-    Found the following (possibly) invalid file URI:
-         URI: CODE_OF_CONDUCT.md
-           From: README.md
+- For an individual example, you can use an `if` block like
+  `if (rlang::is_installed("pkg")) {` to protect code that relies on a
+  suggested package from running if the package isn’t installed.
 
-In this case, the `.Rbuildignore` file ignored the `CODE_OF_CONDUCT.md`
-file, so it didn’t exist after building the R package, meaning that the
-link didn’t work. This can probably be fixed by just removing this file
-from the `.Rbuildignore`. Alternatively,
-`usethis::use_code_of_conduct()` will generate a section to add to your
-README that doesn’t have any relative links.
+- For an entire example section that relies on `"pkg"` being installed,
+  you can use the roxygen2 tag `@examplesIf` (like this
+  `@examplesIf rlang::is_installed("pkg")`) to avoid running any
+  examples in that section if the package isn’t installed.
 
-### You get a note like “Found the following (possibly) invalid URLs”
+- For tests, use `testthat::skip_if_not_installed()`.
 
-One of the most common causes for this is that you have a URL that
-*redirects* to another source. CRAN won’t allow you to have redirects,
-so you might get a rejection that looks like this:
+- Additionally, you can use [this GitHub
+  Action](https://github.com/r-lib/actions/blob/v2-branch/examples/check-no-suggests.yaml)
+  which mimics a `noSuggests` run by CRAN to ensure that you pass a
+  check when no suggested packages are installed.
 
-    Found the following (possibly) invalid URLs:
-
-    URL: https://h3geo.org/docs/core-library/coordsystems#faceijk-coordinates
-         (moved to https://h3geo.org/docs/core-library/coordsystems/)
-    From: inst/doc/intro-to-h3jsr.html
-    Status: 200
-    Message: OK
-
-    Please change http --> https, add trailing slashes, or follow moved
-    content as appropriate.
-
-The problem here is that
-`https://h3geo.org/docs/core-library/coordsystems#faceijk-coordinates`
-redirects to `https://h3geo.org/docs/core-library/coordsystems/`. This
-was actually a typo, there was a forgotten `/` right before `#faceijk`.
-
-To determine if you have any redirecting URLs, you can use
-`urlchecker::url_check()` to find them (and find what they redirect to)
-and `urlchecker::url_update()` to automatically update them to their
-redirected URL.
+The `noSuggests` requirement also applies to recursive dependencies. For
+example, if your package uses `sf::read_sf()`, that requires the tibble
+package, but sf only `Suggests` it, so you need to guard against this
+appropriately in your package.
