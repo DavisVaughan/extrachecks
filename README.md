@@ -48,6 +48,9 @@ This note is also applicable if your function has no return value: “If a
 function does not return a value, please document that too,
 e.g. `\value{None}`.”
 
+You can check for missing `\value` sections locally with
+`devtools::check_doc_fields()`.
+
 ### You have exported functions that don’t have examples
 
 This is similar to the problem about return value documentation, but
@@ -63,6 +66,9 @@ effects. For example, `hardhat::create_modeling_package()` creates a new
 directory, which you would not want to include in an example section
 (which CRAN runs in their regular checks). I didn’t include any examples
 there, and it was accepted.
+
+You can check for missing `\examples` sections locally with
+`devtools::check_doc_fields()`.
 
 ### You fail a `noSuggests` check
 
