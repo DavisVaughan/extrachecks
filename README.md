@@ -4,11 +4,11 @@
 # extrachecks
 
 This is a place to dump extra ad-hoc checks that CRAN does for new
-submissions that are not checked in `devtools::check()`/`R CMD check`.
-Some of them are generally useful, some of them are highly specific, but
-all of them are reasons that an R package has been rejected by CRAN. The
-hope is that by making them public, we can lower the number of
-rejections by making package developers more informed.
+submissions that are not checked in `devtools::check()` or
+`R CMD check`. Some of them are generally useful, some of them are
+highly specific, but all of them are reasons that an R package has been
+rejected by CRAN. The hope is that by making them public, we can lower
+the number of rejections by making package developers more informed.
 
 If you come across an ad-hoc check that isn’t on this list, please feel
 free to open an issue describing it, or submit a PR!
@@ -22,7 +22,7 @@ your example section must call those functions with `:::` like
 Alternatively, you can use the roxygen tag `@noRd` to suppress the
 creation of the `.Rd` file.
 
-### You used `\dontrun{}` in an example or commented out code
+### You used `\dontrun{}` in an example
 
 `\dontrun{}` should only be used if the example really cannot be
 executed (e.g. because of missing additional software, missing API keys,
@@ -34,6 +34,8 @@ Sometimes it is useful to create a custom predicate function
 prerequisite. Then such examples can be placed inside an `if () {...` or
 `@examplesIf` instead of `\dontrun{}`. Instead of a custom predicate,
 sometimes `interactive()` can be used as the condition.
+
+### You commented out code in an example
 
 I had originally commented out some code in an example that would
 otherwise modify the global state. I wanted to talk about the code
@@ -50,13 +52,10 @@ I didn’t want any of these options, so I removed the code from the
 examples section entirely and just mentioned it in the `@details`
 section instead.
 
-### You didn’t document the return value for an exported functions
+### You forgot to document the return value or provide examples for an exported function
 
 You must provide return value documentation for all exported functions
 now. If you use roxygen2, use the tag `@return`.
-
-This note is applicable even if your function is marked internal with
-`@keywords internal`.
 
 This note is also applicable if your function has no return value: “If a
 function does not return a value, please document that too,
@@ -66,7 +65,7 @@ If your exported function has a meaningful return value, then it will
 almost definitely require an examples section. Use the roxygen2 tag
 `@examples` to create one.
 
-This note is applicable even if your function is marked internal with
+These notes are applicable even if your function is marked internal with
 `@keywords internal`.
 
 I have seen exceptions with functions that are used for their side
@@ -198,6 +197,50 @@ Reported by @pnovack-gottshall, who had two URLs that were flagged. The
 first was `paleobiodb.org/`, which was flagged because it needed
 `https://` in front. The second was an http URL, which was flagged
 because it needed to be https.
+
+### You get a note like “Found the following (possibly) invalid file URI”
+
+You might have a relative link that doesn’t exist in the actual built R
+package. Originally reported by @RMHogervorst, who had a link to
+`CODE_OF_CONDUCT.md` in the README, and received the following message:
+
+    Found the following (possibly) invalid file URI:
+         URI: CODE_OF_CONDUCT.md
+           From: README.md
+
+In this case, the `.Rbuildignore` file ignored the `CODE_OF_CONDUCT.md`
+file, so it didn’t exist after building the R package, meaning that the
+link didn’t work. This can probably be fixed by just removing this file
+from the `.Rbuildignore`. Alternatively,
+`usethis::use_code_of_conduct()` will generate a section to add to your
+README that doesn’t have any relative links.
+
+### You get a note like “Found the following (possibly) invalid URLs”
+
+One of the most common causes for this is that you have a URL that
+*redirects* to another source. CRAN won’t allow you to have redirects,
+so you might get a rejection that looks like this:
+
+    Found the following (possibly) invalid URLs:
+
+    URL: https://h3geo.org/docs/core-library/coordsystems#faceijk-coordinates
+         (moved to https://h3geo.org/docs/core-library/coordsystems/)
+    From: inst/doc/intro-to-h3jsr.html
+    Status: 200
+    Message: OK
+
+    Please change http --> https, add trailing slashes, or follow moved
+    content as appropriate.
+
+The problem here is that
+`https://h3geo.org/docs/core-library/coordsystems#faceijk-coordinates`
+redirects to `https://h3geo.org/docs/core-library/coordsystems/`. This
+was actually a typo, there was a forgotten `/` right before `#faceijk`.
+
+To determine if you have any redirecting URLs, you can use
+`urlchecker::url_check()` to find them (and find what they redirect to)
+and `urlchecker::url_update()` to automatically update them to their
+redirected URL.
 
 ### You fail a `noSuggests` check
 
